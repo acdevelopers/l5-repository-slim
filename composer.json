@@ -1,5 +1,5 @@
 {
-    "name": "ac-developers/l5-repository-slim",
+    "name": "acdevelopers/l5-repository-slim",
     "description": "L5 - Repository Slim: A trimmed down version of andersao/l5-repository",
     "keywords": ["laravel", "lumen", "repository", "eloquent", "model", "cache"],
     "type": "library",
