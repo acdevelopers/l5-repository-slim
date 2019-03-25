@@ -1,0 +1,42 @@
+{
+    "name": "ac-developers/l5-repository-slim",
+    "description": "L5 - Repository Slim: A trimmed down version of andersao/l5-repository",
+    "keywords": ["laravel", "lumen", "repository", "eloquent", "model", "cache"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Anitche Chisom",
+        "email": "anitchec.dev@gmail.com",
+        "role": "Developer"
+      }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.1.0",
+        "illuminate/http": "~5.0",
+        "illuminate/config": "~5.0",
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0",
+        "illuminate/pagination": "~5.0",
+        "illuminate/console": "~5.0",
+        "illuminate/filesystem": "~5.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "AcDevelopers\\Repository\\": "src/AcDevelopers/Repository/"
+        }
+      },
+      "config": {
+        "preferred-install": "dist"
+      },
+      "extra": {
+        "laravel": {
+          "providers": [
+            "AcDevelopers\\Repository\\Providers\\RepositoryServiceProvider"
+          ]
+        }
+      },
+    "require-dev": {
+    }
+}

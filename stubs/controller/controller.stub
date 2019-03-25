@@ -1,0 +1,181 @@
+<?php
+
+$NAMESPACE$
+
+use $APPNAME$Http\Requests\$CLASS$CreateRequest;
+use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
+use $APPNAME$Http\Resources\$CLASS$ as $CLASS$Resource;
+use $APPNAME$Http\Resources\$CLASS$Collection;
+$REPOSITORY$
+
+/**
+ * Class $CONTROLLER$Controller.
+ *
+ * @package $NAMESPACE$
+ */
+class $CONTROLLER$Controller extends Controller
+{
+    /**
+     * @var $CLASS$Repository
+     */
+    protected $repository;
+
+    /**
+     * $CONTROLLER$Controller constructor.
+     *
+     * @param $CLASS$Repository $repository
+     */
+    public function __construct($CLASS$Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $this->repository->pushCriteria(app('AcDevelopers\Repository\Criteria\RequestCriteria'));
+        $$PLURAL$ = $this->repository->all();
+
+        if (request()->wantsJson()) {
+
+            return new $CLASS$Collection($$PLURAL$);
+        }
+
+        return view('$PLURAL$.index', compact('$PLURAL$'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  $CLASS$CreateRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store($CLASS$CreateRequest $request)
+    {
+        try {
+
+            $$SINGULAR$ = $this->repository->create($request->all());
+
+            $response = [
+                'message' => '$CLASS$ created.',
+                'data'    => new $CLASS$Resource($$SINGULAR$),
+            ];
+
+            if ($request->wantsJson()) {
+
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with('message', $response['message']);
+        } catch (\Exception $e) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'error'   => true,
+                    'message' => $e->getMessageBag()
+                ]);
+            }
+
+            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $$SINGULAR$ = $this->repository->find($id);
+
+        if (request()->wantsJson()) {
+
+            return new $CLASS$Resource($$SINGULAR$);
+        }
+
+        return view('$PLURAL$.show', compact('$SINGULAR$'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $$SINGULAR$ = $this->repository->find($id);
+
+        return view('$PLURAL$.edit', compact('$SINGULAR$'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $CLASS$UpdateRequest $request
+     * @param  string            $id
+     *
+     * @return Response
+     */
+    public function update($CLASS$UpdateRequest $request, $id)
+    {
+        try {
+
+            $$SINGULAR$ = $this->repository->update($request->all(), $id);
+
+            $response = [
+                'message' => '$CLASS$ updated.',
+                'data'    => new $CLASS$Resource($$SINGULAR$),
+            ];
+
+            if ($request->wantsJson()) {
+
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with('message', $response['message']);
+        } catch (\Exception $e) {
+
+            if ($request->wantsJson()) {
+
+                return response()->json([
+                    'error'   => true,
+                    'message' => $e->getMessageBag()
+                ]);
+            }
+
+            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+        }
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $deleted = $this->repository->delete($id);
+
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'message' => '$CLASS$ deleted.',
+                'deleted' => $deleted,
+            ]);
+        }
+
+        return redirect()->back()->with('message', '$CLASS$ deleted.');
+    }
+}

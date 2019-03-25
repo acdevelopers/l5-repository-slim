@@ -183,9 +183,6 @@ You must first configure the storage location of the repository files. By defaul
             'models'       => 'Entities',
             'repositories' => 'Repositories',
             'interfaces'   => 'Repositories',
-            'transformers' => 'Transformers',
-            'presenters'   => 'Presenters',
-            'validators'   => 'Validators',
             'controllers'  => 'Http/Controllers',
             'provider'     => 'RepositoryServiceProvider',
             'criteria'     => 'Criteria',
@@ -589,7 +586,7 @@ protected $fieldSearchable = [
 
 Request all data without filter by request
 
-`http://AcDevelopers.local/users`
+`http://ac-developers.local/users`
 
 ```json
 [
@@ -619,23 +616,23 @@ Request all data without filter by request
 
 Conducting research in the repository
 
-`http://AcDevelopers.local/users?search=John%20Doe`
+`http://ac-developers.local/users?search=John%20Doe`
 
 or
 
-`http://AcDevelopers.local/users?search=John&searchFields=name:like`
+`http://ac-developers.local/users?search=John&searchFields=name:like`
 
 or
 
-`http://AcDevelopers.local/users?search=john@gmail.com&searchFields=email:=`
+`http://ac-developers.local/users?search=john@gmail.com&searchFields=email:=`
 
 or
 
-`http://AcDevelopers.local/users?search=name:John Doe;email:john@gmail.com`
+`http://ac-developers.local/users?search=name:John Doe;email:john@gmail.com`
 
 or
 
-`http://AcDevelopers.local/users?search=name:John;email:john@gmail.com&searchFields=name:like;email:=`
+`http://ac-developers.local/users?search=name:John;email:john@gmail.com&searchFields=name:like;email:=`
 
 ```json
 [
@@ -650,7 +647,7 @@ or
 ```
 
 By default RequestCriteria makes its queries using the **OR** comparison operator for each query parameter.
-`http://AcDevelopers.local/users?search=age:17;email:john@gmail.com`
+`http://ac-developers.local/users?search=age:17;email:john@gmail.com`
 
 The above example will execute the following query:
 ``` sql
@@ -659,7 +656,7 @@ SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
 
 In order for it to query using the **AND**, pass the *searchJoin* parameter as shown below:
 
-`http://AcDevelopers.local/users?search=age:17;email:john@gmail.com&searchJoin=and`
+`http://ac-developers.local/users?search=age:17;email:john@gmail.com&searchJoin=and`
 
 
 
@@ -667,7 +664,7 @@ In order for it to query using the **AND**, pass the *searchJoin* parameter as s
 
 Filtering fields
 
-`http://AcDevelopers.local/users?filter=id;name`
+`http://ac-developers.local/users?filter=id;name`
 
 ```json
 [
@@ -688,7 +685,7 @@ Filtering fields
 
 Sorting the results
 
-`http://AcDevelopers.local/users?filter=id;name&orderBy=id&sortedBy=desc`
+`http://ac-developers.local/users?filter=id;name&orderBy=id&sortedBy=desc`
 
 ```json
 [
@@ -709,7 +706,7 @@ Sorting the results
 
 Sorting through related tables
 
-`http://AcDevelopers.local/users?orderBy=posts|title&sortedBy=desc`
+`http://ac-developers.local/users?orderBy=posts|title&sortedBy=desc`
 
 Query will have something like this
 
@@ -721,7 +718,7 @@ ORDER BY title
 ...
 ```
 
-`http://AcDevelopers.local/users?orderBy=posts:custom_id|posts.title&sortedBy=desc`
+`http://ac-developers.local/users?orderBy=posts:custom_id|posts.title&sortedBy=desc`
 
 Query will have something like this
 
@@ -736,7 +733,7 @@ ORDER BY posts.title
 
 Add relationship
 
-`http://AcDevelopers.local/users?with=groups`
+`http://ac-developers.local/users?with=groups`
 
 
 
@@ -842,3 +839,4 @@ The cacheable methods are : all, paginate, find, findByField, findWhere, getByCr
 - [Anderson Andrade](https://github.com/andersao)
 
 ### Licence
+The L5 Repository Slim is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
