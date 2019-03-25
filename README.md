@@ -3,7 +3,9 @@
 Laravel 5 Repositories Slim is a trimmed down version of [Anderson Andrade's](https://github.com/andersao) [andersao/l5-repository
 ](https://github.com/andersao/l5-repository) used to abstract the data layer. Always thought the original package had a little more than what i needed not to mention some its features already come right out of the box with newer versions of Laravel. So everthing is still the same only i've removed `Validator`, `Presenter` and `Transformer`, figured they could be substituted with Laravel's `FormRequest` and `Resource` classes.
 
-
+[![Latest Stable Version](https://poser.pugx.org/acdevelopers/l5-repository-slim/v/stable)](https://packagist.org/packages/acdevelopers/l5-repository-slim)
+[![License](https://poser.pugx.org/acdevelopers/l5-repository-slim/license)](https://packagist.org/packages/acdevelopers/l5-repository-slim)
+[![Latest Unstable Version](https://poser.pugx.org/acdevelopers/l5-repository-slim/v/unstable)](https://packagist.org/packages/acdevelopers/l5-repository-slim)
 
 You want to know a little more about the Repository pattern? [Read this great article](http://bit.ly/1IdmRNS).
 
