@@ -41,7 +41,7 @@ You want to know a little more about the Repository pattern? [Read this great ar
 Execute the following command to get the latest version of the package:
 
 ```terminal
-composer require ac-developers/l5-repository-slim
+composer require acdevelopers/l5-repository-slim
 ```
 
 ### Laravel
